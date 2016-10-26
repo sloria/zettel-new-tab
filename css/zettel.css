@@ -1,0 +1,65 @@
+@import 'https://fonts.googleapis.com/css?family=Cousine:400,700';
+body{
+  font-family: 'Cousine',Menlo,Consolas,monospace;
+  font-size: 12px;
+  line-height: 1.5em;
+  color: black;
+}
+h1{
+  font-size: 1.0em;
+  /* font-weight: normal; */
+}
+h1,p{
+  display:inline;
+}
+h1,a{
+  border-bottom:4px solid black;
+  padding:6px 0 2px;
+}
+a {
+  color: #38E;
+  text-decoration:none;
+  border-color: #38E;
+}
+a:hover{
+  background:black;
+}
+.br{
+  word-spacing:-5px;
+}
+.lk:link,.lk:visited{
+  color: #aaa;
+  border-color: transparent;
+}
+.lk:hover{
+  border-color:#aaa;
+}
+/* */
+h1,h2,h3,p {
+  display:table;
+  padding:0;
+}
+h1{
+  border-bottom:none;
+  margin:0;
+}
+section{
+margin:0 0 2em;
+}
+h2,h3
+{
+font-size:inherit;
+font-weight:normal;
+color:black;
+border-bottom:1px solid black;
+}
+h2{
+  border-bottom-width:4px;
+}
+h2,h3,p{
+  margin:0 0 1em;
+}
+header{
+  position:absolute;margin:0 0 0 -200px;
+}
+@media screen and (max-width:700px){body{margin:0;}header{position:static;margin:0 0 2em;}}
