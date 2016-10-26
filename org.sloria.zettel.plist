@@ -6,8 +6,8 @@
     <string>org.sloria.zettel.plist</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/sloria/miniconda/envs/zettel/bin/python</string>
-        <string>/Users/sloria/projects/web-projects/zettel/zettel.py</string>
+        <string>/usr/local/bin/node</string>
+        <string>/Users/sloria/projects/web-projects/zettel/server.js</string>
     </array>
     <key>KeepAlive</key>
     <true/>

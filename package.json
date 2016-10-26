@@ -1,0 +1,24 @@
+{
+  "name": "zettel",
+  "version": "0.1.0",
+  "description": "Zettel note server",
+  "main": "server.js",
+  "scripts": {
+    "serve:dev": "DEBUG=express:* nodemon server.js"
+  },
+  "author": "Steven Loria",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "glob": "^7.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "nodemon": "^1.11.0"
+  }
+}
