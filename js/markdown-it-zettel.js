@@ -75,9 +75,10 @@ module.exports = function ins_plugin(md, options) {
       token.tag     = 'a';
       token.nesting = 1;
       token.markup  = '[[';
-      token.content = '';
-      var contentToken = state.tokens.filter(function(each) {return each.type === 'text'; })[0];
-      var zettelURL = BASE_URL.replace(/\/$/, '') + '/notes/' + contentToken.content;
+      token.content = '[[';
+      var noteNameRe = /\[\[(.+)\]\]/;
+      var noteName = noteNameRe.exec(state.src)[1];
+      var zettelURL = BASE_URL.replace(/\/$/, '') + '/notes/' + noteName;
       token.attrs = [
           ['class', 'zettel-link'],
           ['href', '#'],
@@ -89,10 +90,10 @@ module.exports = function ins_plugin(md, options) {
       token.tag     = 'a';
       token.nesting = -1;
       token.markup  = ']]';
-      token.content = '';
+      token.content = ']]';
 
       if (state.tokens[endDelim.token - 1].type === 'text' &&
-          state.tokens[endDelim.token - 1].content === '+') {
+          state.tokens[endDelim.token - 1].content === ']') {
 
         loneMarkers.push(endDelim.token - 1);
       }

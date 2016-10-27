@@ -3,6 +3,7 @@
   const $ = document.getElementById.bind(document);
 
   const URL = 'http://127.0.0.1:4444/';
+  const RANDOM_NOTE_URL = URL;
 
   /* Markdown rendering */
   const md = new markdownit().use(markdownitZettel, {url: URL, onClick: () => {console.log('works!'); }});  // eslint-disable-line
@@ -10,8 +11,8 @@
     return md.render(content);
   }
 
+  /* Fetching note */
   function fetchAndRender(url) {
-    /* Fetching note */
     fetch(url)
       .then(resp => resp.json())
       .then((resp) => {
@@ -23,6 +24,7 @@
       });
   }
 
+  /* Set up event listeners on links to other notes */
   function setUpLinks() {
     const elms = document.getElementsByClassName('zettel-link');
     for (let i = 0, len = elms.length; i < len; i++) {
@@ -51,5 +53,5 @@
   themeButton.addEventListener('click', themeSwitch);
 
   // Random note
-  fetchAndRender(URL);
+  fetchAndRender(RANDOM_NOTE_URL);
 }());
