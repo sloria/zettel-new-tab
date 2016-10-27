@@ -28,10 +28,30 @@ function randomNote() {
   });
 }
 
+function getNote(title) {
+  const filepath = path.join(NVALT_PATH, `${title}.txt`);
+  return new Promise((resolve, reject) => {
+    fs.readFile(filepath, 'utf8', (err, content) => {
+      if (err) reject(err);
+      resolve({ content, title });
+    });
+  });
+}
+
 app.get('/', (req, res) => {
   randomNote()
     .then(({ content, title }) => {
       res.json({ content, title });
+    });
+});
+
+app.get('/notes/:title', (req, res) => {
+  getNote(req.params.title)
+    .then(({ content, title }) => {
+      res.json({ content, title });
+    })
+    .catch(() => {
+      res.status(500).json({ message: 'Something broke.' });
     });
 });
 
