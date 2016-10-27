@@ -8,22 +8,21 @@ body{
 }
 h1{
   font-size: 1.0em;
-  /* font-weight: normal; */
 }
 h1,p{
   display:inline;
 }
 h1,a{
-  border-bottom:4px solid white;
   padding:6px 0 2px;
 }
 a {
-  color: #C4C4C4;
+  color: #ec007c;
   text-decoration:none;
-  border-color: #C4C4C4;
+  border-color: #ec007c;
 }
 a:hover{
   background: #fff;
+  color: #1A1D1D;
 }
 .br{
   word-spacing:-5px;
@@ -44,7 +43,7 @@ font-weight:normal;
 border-bottom:1px solid #fff;
 }
 h2{
-  border-bottom-width:4px;
+  border-bottom-width: 2px;
 }
 h2,h3,p{
   margin:0 0 1em;

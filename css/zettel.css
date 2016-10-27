@@ -12,8 +12,7 @@ h1,p{
   display:inline;
 }
 h1,a{
-  border-bottom:4px solid #1A1D1D;
-  padding:6px 0 2px;
+  padding: 6px 0 2px;
 }
 a {
   text-decoration:none;
@@ -43,7 +42,7 @@ color: #1A1D1D;
 border-bottom:1px solid #1A1D1D;
 }
 h2{
-  border-bottom-width:4px;
+  border-bottom-width: 2px;
 }
 h2,h3,p{
   margin:0 0 1em;
