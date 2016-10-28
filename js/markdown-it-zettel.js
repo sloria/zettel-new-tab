@@ -80,9 +80,7 @@ module.exports = function ins_plugin(md, options) {
       var noteName = noteNameRe.exec(state.src)[1];
       var zettelURL = BASE_URL.replace(/\/$/, '') + '/notes/' + noteName;
       token.attrs = [
-          ['class', 'zettel-link'],
-          ['href', '#'],
-          ['data-zettel-url', zettelURL]
+          ['href', '#/notes/' + encodeURI(noteName)],
       ];
 
       token         = state.tokens[endDelim.token];

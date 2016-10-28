@@ -46,7 +46,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/notes/:title', (req, res) => {
-  getNote(req.params.title)
+  const noteTitle = decodeURI(req.params.title);
+  getNote(noteTitle)
     .then(({ content, title }) => {
       res.json({ content, title });
     })
