@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const NVALT_PATH = path.join(os.homedir(), 'Dropbox', 'nvalt');
+const ZETTEL_PATH = process.env.ZETTEL_PATH || path.join(os.homedir(), 'Dropbox', 'nvalt');
 
 function randomChoice(array) {
   return array[Math.floor(Math.random() * array.length)];
@@ -16,7 +16,7 @@ function randomChoice(array) {
 
 function randomNote() {
   return new Promise((resolve, reject) => {
-    glob(path.join(NVALT_PATH, '*.txt'), (err, files) => {
+    glob(path.join(ZETTEL_PATH, '*.txt'), (err, files) => {
       if (err) reject(err);
       const choice = randomChoice(files);
       const title = path.basename(choice, '.txt');
@@ -29,7 +29,7 @@ function randomNote() {
 }
 
 function getNote(title) {
-  const filepath = path.join(NVALT_PATH, `${title}.txt`);
+  const filepath = path.join(ZETTEL_PATH, `${title}.txt`);
   return new Promise((resolve, reject) => {
     fs.readFile(filepath, 'utf8', (err, content) => {
       if (err) reject(err);
