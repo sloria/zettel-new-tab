@@ -17,7 +17,10 @@
 
 
   /* Markdown rendering */
-  const md = new markdownit().use(markdownitZettel, {url: URL});  // eslint-disable-line
+  const md = new markdownit()
+    .use(markdownitZettel, {
+      buildURL: noteName => `#/notes/${encodeURI(noteName)}`,
+    });
   function renderMarkdown(content) {
     return md.render(content);
   }

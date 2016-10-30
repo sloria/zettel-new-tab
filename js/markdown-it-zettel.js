@@ -2,9 +2,7 @@
 'use strict';
 
 
-module.exports = function ins_plugin(md, options) {
-
-  var BASE_URL = options.url;
+module.exports = function zettel_plugin(md, options) {
   // Insert each marker as a separate text token, and add it to delimiter list
   var LBRACKET = 0x5B;
   var RBRACKET = 0x5D;
@@ -78,9 +76,8 @@ module.exports = function ins_plugin(md, options) {
       token.content = '[[';
       var noteNameRe = /\[\[(.+)\]\]/;
       var noteName = noteNameRe.exec(state.src)[1];
-      var zettelURL = BASE_URL.replace(/\/$/, '') + '/notes/' + noteName;
       token.attrs = [
-          ['href', '#/notes/' + encodeURI(noteName)],
+          ['href', options.buildURL(noteName)],
       ];
 
       token         = state.tokens[endDelim.token];
