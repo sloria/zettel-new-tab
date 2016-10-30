@@ -1,14 +1,21 @@
 const path = require('path');
-const os = require('os');
 const fs = require('fs');
 const glob = require('glob');
 const express = require('express');
 const cors = require('cors');
+const env = require('node-env-file');
 
 const app = express();
 app.use(cors());
 
-const ZETTEL_PATH = process.env.ZETTEL_PATH || path.join(os.homedir(), 'Dropbox', 'nvalt');
+
+env(path.join(__dirname, '.env'));
+
+if (!process.env.ZETTEL_PATH) {
+  throw new Error('The ZETTEL_PATH environment variable must be specified');
+}
+const ZETTEL_PATH = process.env.ZETTEL_PATH;
+const PORT = 4444;
 
 function randomChoice(array) {
   return array[Math.floor(Math.random() * array.length)];
@@ -56,6 +63,6 @@ app.get('/notes/:title', (req, res) => {
     });
 });
 
-app.listen(4444, () => {
-  console.log('App listening on port 4444!'); // eslint-disable-line
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });

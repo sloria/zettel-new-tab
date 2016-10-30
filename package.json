@@ -4,14 +4,17 @@
   "description": "Zettel note server",
   "main": "server.js",
   "scripts": {
-    "serve:dev": "DEBUG=express:* nodemon server.js"
+    "serve:dev": "DEBUG=express:* nodemon server.js",
+    "serve": "node server.js"
   },
+  "repository": "https://github.com/sloria/zettel",
   "author": "Steven Loria",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "glob": "^7.1.1"
+    "glob": "^7.1.1",
+    "node-env-file": "^0.1.8"
   },
   "devDependencies": {
     "eslint": "^3.8.1",
