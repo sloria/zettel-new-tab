@@ -1,4 +1,4 @@
-/* global markdownit markdownitZettel Router */
+/* global markdownit markdownitZettel Router Mousetrap */
 (function app() {
   const $ = document.getElementById.bind(document);
 
@@ -57,7 +57,7 @@
   const darkTheme = 'css/zettel-dark.css';
   const linkElement = $('styleLink');
   const themeButton = $('themeButton');
-  function themeSwitch() {
+  function toggleTheme() {
     const newStyle = (linkElement.getAttribute('href') === lightTheme) ? darkTheme : lightTheme;
     linkElement.setAttribute('href', newStyle);
     localStorage.theme = newStyle;
@@ -65,13 +65,48 @@
   let currentStyle = localStorage.theme;
   if (currentStyle == undefined) currentStyle = lightTheme;  // eslint-disable-line
   linkElement.setAttribute('href', currentStyle);
-  themeButton.addEventListener('click', themeSwitch);
+  themeButton.addEventListener('click', toggleTheme);
 
-  /* Random note */
-  fetchAndRender(RANDOM_NOTE_URL)
-    // We set the route so that the back button will work after the first render.
-    .then((value) => {
-      const route = `/notes/${encodeURI(value.title)}`;
-      router.setRoute(route);
-    });
+  /* Focus mode */
+  const focusButton = $('focusButton');
+
+  function setFocus() {
+    appElm.innerHTML = '';
+    focusButton.innerText = '[Unfocus]';
+  }
+  function unsetFocus() {
+    initialRender();
+    focusButton.innerText = '[Focus]';
+  }
+  function toggleFocus() {
+    localStorage.focus = parseInt(localStorage.focus, 10) ? '0' : '1';
+    if (parseInt(localStorage.focus, 10)) {
+      setFocus();
+    } else {
+      unsetFocus();
+    }
+  }
+  focusButton.addEventListener('click', toggleFocus);
+
+  function initialRender() {
+    if (parseInt(localStorage.focus, 10)) {
+      setFocus();
+    } else {
+      /* Random note */
+      fetchAndRender(RANDOM_NOTE_URL)
+        // We set the route so that the back button will work after the first render.
+        .then((value) => {
+          const route = `/notes/${encodeURI(value.title)}`;
+          router.setRoute(route);
+        });
+    }
+  }
+
+  function setKeyboardShortcuts() {
+    Mousetrap.bind('4', toggleFocus);
+    Mousetrap.bind('5', toggleTheme);
+  }
+
+  initialRender();
+  setKeyboardShortcuts();
 }());
