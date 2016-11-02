@@ -37,16 +37,21 @@
   function parseJSON(response) {
     return response.json();
   }
+
+  function fetchJSON(...args) {
+    return fetch(...args).then(checkStatus).then(parseJSON);
+  }
+
   const appElm = $('app');
   function fetchAndRender(url) {
     return new Promise((resolve, reject) => {
-      fetch(url)
-        .then(checkStatus).then(parseJSON)
+      fetchJSON(url)
         .then((resp) => {
+          const title = resp.title;
           const content = `# ${resp.title} \n ${resp.content}`;
           const rendered = renderMarkdown(content);
           appElm.innerHTML = rendered;
-          resolve({ title: resp.title, content: resp.content });
+          resolve({ title, content });
         })
         .catch((err) => {
           appElm.innerHTML = 'Could not render note';
@@ -63,11 +68,8 @@
   function toggleTheme() {
     const newStyle = (linkElement.getAttribute('href') === lightTheme) ? darkTheme : lightTheme;
     linkElement.setAttribute('href', newStyle);
-    localStorage.theme = newStyle;
+    window.localStorage.theme = newStyle;
   }
-  let currentStyle = localStorage.theme;
-  if (currentStyle == undefined) currentStyle = lightTheme;  // eslint-disable-line
-  linkElement.setAttribute('href', currentStyle);
   themeButton.addEventListener('click', toggleTheme);
 
   /* Focus mode */
@@ -82,8 +84,8 @@
     focusButton.innerText = '[Focus]';
   }
   function toggleFocus() {
-    localStorage.focus = parseInt(localStorage.focus, 10) ? '0' : '1';
-    if (parseInt(localStorage.focus, 10)) {
+    window.localStorage.focus = parseInt(window.localStorage.focus, 10) ? '0' : '1';
+    if (parseInt(window.localStorage.focus, 10)) {
       setFocus();
     } else {
       unsetFocus();
@@ -92,7 +94,11 @@
   focusButton.addEventListener('click', toggleFocus);
 
   function initialRender() {
-    if (parseInt(localStorage.focus, 10)) {
+    let currentStyle = window.localStorage.theme;
+    if (currentStyle == undefined) currentStyle = lightTheme;  // eslint-disable-line
+    linkElement.setAttribute('href', currentStyle);
+
+    if (parseInt(window.localStorage.focus, 10)) {
       setFocus();
     } else {
       /* Random note */
