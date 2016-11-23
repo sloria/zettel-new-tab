@@ -1,9 +1,16 @@
 @import 'https://fonts.googleapis.com/css?family=Cousine:400,700';
 body{
   font-family: 'Cousine',Menlo,Consolas,monospace;
-  font-size: 12px;
-  line-height: 1.5em;
+  font-size: 14px;
+  line-height: 1.6em;
   color: #1A1D1D;
+  float: none;
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 900px;
+}
+.btn {
+  font-size: 12px;
 }
 h1{
   font-size: 1.0em;
@@ -32,7 +39,6 @@ h1,h2,h3,p {
 }
 h1{
   border-bottom:none;
-  margin:0;
 }
 h2,h3
 {
