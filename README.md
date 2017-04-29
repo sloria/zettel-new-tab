@@ -1,5 +1,7 @@
 # Zettel New Tab Page
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/sloria/zettel-new-tab.svg)](https://greenkeeper.io/)
+
 
 ![](https://dl.dropboxusercontent.com/u/1693233/github/zettel-new-tab-dark.png)
 
