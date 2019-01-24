@@ -1,5 +1,9 @@
 # Zettel New Tab Page
 
+## WARNING
+
+This isn't for public use. Use at your own risk.
+
 
 ![](https://dl.dropboxusercontent.com/u/1693233/github/zettel-new-tab-dark.png)
 
@@ -19,14 +23,15 @@ npm install
 ZETTEL_PATH='/Users/sloria/Dropbox/nvalt'
 ```
 
+## Chrome
+
 * In Chrome, go to Extensions then click "Load unpacked extension". Choose this directory.
-* Run the server.
-
-```
-node server.js
-```
-
 * Open a new tab in Chrome.
+
+
+## Firefox
+
+Install from https://addons.mozilla.org/en-US/developers/addon/zettel/versions
 
 
 ### Using launchd to run the server in the background and on system startup (Mac OSX)
