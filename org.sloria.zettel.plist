@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/node</string>
-        <string>/Users/sloria/projects/web-projects/zettel/server.js</string>
+        <string>/Users/sloria/projects/sloria/zettel-new-tab/server.js</string>
     </array>
     <key>KeepAlive</key>
     <true/>
