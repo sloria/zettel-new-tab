@@ -78,8 +78,8 @@
   themeButton.addEventListener('click', toggleTheme);
 
   // Match system theme
-  const darkQuery = window.matchMedia('(prefers-color-scheme: dark');
-  const lightQuery = window.matchMedia('(prefers-color-scheme: light');
+  const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const lightQuery = window.matchMedia('(prefers-color-scheme: light)');
   const isSupported = darkQuery.matches || lightQuery.matches;
   if (isSupported) {
     if (darkQuery.matches) toggleTheme('dark');
