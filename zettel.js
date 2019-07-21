@@ -82,6 +82,8 @@
   const lightQuery = window.matchMedia('(prefers-color-scheme: light');
   const isSupported = darkQuery.matches || lightQuery.matches;
   if (isSupported) {
+    if (darkQuery.matches) toggleTheme('dark');
+    if (lightQuery.matches) toggleTheme('light');
     darkQuery.addListener(q => q.matches && toggleTheme('dark'));
     lightQuery.addListener(q => q.matches && toggleTheme('light'));
   }
