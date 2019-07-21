@@ -65,12 +65,26 @@
   const darkTheme = 'css/zettel-dark.css';
   const linkElement = $('styleLink');
   const themeButton = $('themeButton');
-  function toggleTheme() {
-    const newStyle = (linkElement.getAttribute('href') === lightTheme) ? darkTheme : lightTheme;
+  function toggleTheme(theme) {
+    let newStyle;
+    if (theme) {
+      newStyle = theme === 'dark' ? darkTheme : lightTheme;
+    } else {
+      newStyle = (linkElement.getAttribute('href') === lightTheme) ? darkTheme : lightTheme;
+    }
     linkElement.setAttribute('href', newStyle);
     window.localStorage.theme = newStyle;
   }
   themeButton.addEventListener('click', toggleTheme);
+
+  // Match system theme
+  const darkQuery = window.matchMedia('(prefers-color-scheme: dark');
+  const lightQuery = window.matchMedia('(prefers-color-scheme: light');
+  const isSupported = darkQuery.matches || lightQuery.matches;
+  if (isSupported) {
+    darkQuery.addListener(q => q.matches && toggleTheme('dark'));
+    lightQuery.addListener(q => q.matches && toggleTheme('light'));
+  }
 
   /* Focus mode */
   const focusButton = $('focusButton');
