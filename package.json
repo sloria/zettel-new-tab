@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "serve:dev": "DEBUG=express:* nodemon server.js",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "start:firefox": "web-ext run --source-dir .",
+    "build:firefox": "web-ext build --overwrite-dest --source-dir ."
   },
   "repository": "https://github.com/sloria/zettel",
   "author": "Steven Loria",
@@ -22,6 +24,7 @@
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "web-ext": "^3.1.1"
   }
 }
