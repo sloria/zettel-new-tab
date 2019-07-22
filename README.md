@@ -4,10 +4,6 @@
 
 This isn't for public use. Use at your own risk.
 
-
-![](https://dl.dropboxusercontent.com/u/1693233/github/zettel-new-tab-dark.png)
-
-
 ## Installation
 
 * `cd` to this repo.

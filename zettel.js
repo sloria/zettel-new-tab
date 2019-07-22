@@ -75,7 +75,7 @@
     linkElement.setAttribute('href', newStyle);
     window.localStorage.theme = newStyle;
   }
-  themeButton.addEventListener('click', toggleTheme);
+  themeButton.addEventListener('click', () => toggleTheme());
 
   // Match system theme
   const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
