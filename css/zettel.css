@@ -23,7 +23,7 @@ h1,a{
 }
 a {
   text-decoration:none;
-  border-color: #38E;
+  color: #38E;
 }
 a:hover{
   background: #4a525a;

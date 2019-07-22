@@ -118,12 +118,7 @@
       setFocus();
     } else {
       /* Random note */
-      fetchAndRender(RANDOM_NOTE_URL)
-        // We set the route so that the back button will work after the first render.
-        .then((value) => {
-          const route = `/notes/${encodeURI(value.title)}`;
-          router.setRoute(route);
-        });
+      fetchAndRender(RANDOM_NOTE_URL);
     }
   }
 
